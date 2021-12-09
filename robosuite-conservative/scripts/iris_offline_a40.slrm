@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --partition=iris
+#SBATCH --time=120:00:00
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=12
+#SBATCH --mem=80G
+#SBATCH --gres=gpu:1
+#SBATCH --job-name="robot-cql"
+#SBATCH --exclude=iris3,iris4
+#SBATCH --error="/iris/u/beining/slrm_log/robot-cql-%j.err"
+#SBATCH --output="/iris/u/beining/slrm_log/robot-cql-%j.out"
+
+bash ./scripts/iris_offline.sh $env $alg $robo $data

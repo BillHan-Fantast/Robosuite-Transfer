@@ -1,0 +1,10 @@
+{
+  "dataset_kwargs": {
+    "dataset_type": "medium_replay_400",
+    "episode_skip": 4,
+    "max_epi_length": 1000
+  },
+  "trainer_kwargs": {
+    "buffer_size": 250000
+  }
+}

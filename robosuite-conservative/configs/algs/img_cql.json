@@ -1,0 +1,43 @@
+{
+  "algorithm": "IMG_CQL",
+  "log_dir": "log",
+  "algorithm_kwargs": {
+    "batch_size": 50,
+    "eval_max_path_length": 500,
+    "visualize_policy_interval": 500,
+    "log_snapshot_interval": 100,
+    "num_agent_epochs": 501,
+    "num_eval_steps_per_epoch": 2000,
+    "num_trains_per_train_loop": 50
+  },
+  "policy_kwargs": {
+    "hidden_dim": 1024,
+    "hidden_depth": 2,
+    "use_state_input": true,
+    "log_std_bounds": [-10, 2]
+  },
+  "qf_kwargs": {
+    "hidden_dim": 1024,
+    "hidden_depth": 2,
+    "use_state_input": true
+  },
+  "encoder_kwargs": {
+    "feature_dim": 50
+  },
+  "trainer_kwargs": {
+    "discount": 0.99,
+    "policy_lr": 0.001,
+    "qf_lr": 0.0003,
+    "reward_scale": 1.0,
+    "cql_samples": 8,
+    "beta_penalty": 1.0,
+    "soft_target_tau": 0.01,
+    "actor_update_frequency": 2,
+    "init_temperature": 0.1,
+    "critic_target_update_frequency": 5,
+    "use_automatic_entropy_tuning": true
+  },
+  "dataset_kwargs": {
+    "model_batch_length": 6
+  }
+}

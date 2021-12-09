@@ -1,0 +1,62 @@
+{
+  "algorithm": "Latent_COMBO",
+  "log_dir": "log",
+  "load_model_snapshot": false,
+  "algorithm_kwargs": {
+    "batch_size": 50,
+    "eval_max_path_length": 500,
+    "log_snapshot_interval": 5000,
+    "visualize_model_interval": 5000,
+    "visualize_policy_interval": 500,
+    "num_model_epochs": 10001,
+    "num_agent_epochs": 1001,
+    "samples_per_epoch": 2,
+    "num_eval_steps_per_epoch": 2000,
+    "num_trains_per_train_loop":  500,
+    "min_num_batch_before_training": 50
+  },
+  "agent_kwargs": {
+    "expl_type": "additive_gaussian",
+    "expl_amount": 0.2,
+    "expl_decay": false,
+    "expl_min": 0,
+    "stochastic_size": 128,
+    "deterministic_size": 256,
+    "model_hidden": 256,
+    "action_hidden": 512,
+    "reward_hidden": 256,
+    "action_layers": 3,
+    "action_dist": "none",
+    "reward_layers": 3,
+    "value_layers": 3,
+    "value_hidden": 512,
+    "state_hidden": 256,
+    "state_layers": 3,
+    "use_robot_state": true,
+    "num_models": 4
+  },
+  "trainer_kwargs": {
+    "real_batch_size": 256,
+    "fake_batch_size": 256,
+    "model_lr": 3e-4,
+    "qf_lr": 3e-4,
+    "ac_lr": 3e-4,
+    "grad_clip": 100.0,
+    "discount": 0.99,
+    "horizon": 5,
+    "cql_samples": 8,
+    "kl_scale": 0.2,
+    "state_scale": 10.0,
+    "image_scale": 5.0,
+    "reward_scale": 1.0,
+    "free_nats": 0,
+    "beta_penalty": 1.0,
+    "target_tau": 5e-3,
+    "weight_decay": 0,
+    "actor_update_frequency": 1,
+    "target_update_frequency": 2
+  },
+  "dataset_kwargs": {
+    "model_batch_length": 50
+  }
+}

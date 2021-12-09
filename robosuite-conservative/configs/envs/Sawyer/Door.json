@@ -1,0 +1,37 @@
+{
+  "exp_name": "Door-Default",
+  "environment_kwargs": {
+    "control_freq": 20,
+    "controller": "OSC_POSE",
+    "env_name": "Door",
+    "hard_reset": false,
+    "horizon": 500,
+    "ignore_done": true,
+    "has_offscreen_renderer": true,
+    "use_object_obs": true,
+    "use_camera_obs": true,
+    "reward_shaping": true,
+    "reward_scale": 1.0,
+    "camera_names": "frontview",
+    "camera_heights": 128,
+    "camera_widths": 128,
+    "robots": ["Sawyer"],
+    "table_xml": "arenas/table_arena/default.xml"
+  },
+  "wrapper_kwargs": {
+    "visual_keys": "frontview_image",
+    "image_process_kwargs": {
+      "image_crop_yx": {
+        "y": 35,
+        "x": 20
+      },
+      "image_crop_size": 88,
+      "image_obs_size": 84,
+      "object_cat_lst": [[0, 14]],
+      "state_cat_lst": [[21, 32]]
+    }
+  },
+  "dataset_kwargs": {
+    "dataset_path": "../dataset/robosuite/Door-Sawyer-OSC-POSE-default/"
+  }
+}

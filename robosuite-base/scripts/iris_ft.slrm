@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --partition=iris
+#SBATCH --time=144:00:00
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=70G
+#SBATCH --gres=gpu:1
+#SBATCH --job-name="robot-sac"
+#SBATCH --exclude=iris-hp-z8,iris1,iris2,iris3,iris4
+#SBATCH --error="/iris/u/beining/slrm_log/robot-sac-%j.err"
+#SBATCH --output="/iris/u/beining/slrm_log/robot-sac-%j.out"
+
+bash ./scripts/iris_run.sh $env $robot $ctrl $var $plr

@@ -1,0 +1,30 @@
+{
+  "algorithm": "CQL",
+  "log_dir": "log",
+  "algorithm_kwargs": {
+    "batch_size": 256,
+    "eval_max_path_length": 500,
+    "log_snapshot_interval": 500,
+    "num_agent_epochs": 400,
+    "num_eval_steps_per_epoch": 1000,
+    "num_trains_per_train_loop": 2000
+  },
+  "policy_kwargs": {
+    "hidden_sizes": [256, 256]
+  },
+  "qf_kwargs": {
+    "hidden_sizes": [256, 256]
+  },
+  "trainer_kwargs": {
+    "discount": 0.99,
+    "policy_lr": 0.0003,
+    "qf_lr": 0.0003,
+    "reward_scale": 1.0,
+    "temp": 1.0,
+    "cql_samples": 4,
+    "beta_penalty": 10.0,
+    "soft_target_tau": 0.005,
+    "target_update_frequency": 5,
+    "use_automatic_entropy_tuning": true
+  }
+}
