@@ -1,0 +1,28 @@
+{
+  "source_wrapper_kwargs": {
+    "visual_keys": "frontview_image",
+    "state_keys": ["robot0_eef_pos", "robot0_eef_quat",
+      "robot0_gripper_qpos", "robot0_gripper_qvel"],
+    "image_process_kwargs": {
+      "image_crop_yx": {
+        "y": 20,
+        "x": 16
+      },
+      "image_crop_size": 96,
+      "image_obs_size": 84
+    }
+  },
+  "target_wrapper_kwargs": {
+    "visual_keys": "frontview_image",
+    "state_keys": ["robot0_eef_pos", "robot0_eef_quat",
+      "robot0_gripper_qpos", "robot0_gripper_qvel"],
+    "image_process_kwargs": {
+      "image_crop_yx": {
+        "y": 20,
+        "x": 16
+      },
+      "image_crop_size": 96,
+      "image_obs_size": 84
+    }
+  }
+}

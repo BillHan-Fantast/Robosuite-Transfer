@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --partition=iris-hi
+#SBATCH --time=120:00:00
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=120G
+#SBATCH --gres=gpu:1
+#SBATCH --job-name="robot-InvVAE"
+#SBATCH --exclude=iris-hp-z8,iris1,iris2,iris3,iris4
+#SBATCH --error="/iris/u/beining/slrm_log/robot-invvae-%j.err"
+#SBATCH --output="/iris/u/beining/slrm_log/robot-invvae-%j.out"
+
+bash ./scripts/iris_vae.sh $alg $env $pair $repr $domain $lr $beta $inverse $paired $seed

@@ -1,0 +1,8 @@
+{
+  "paired_name": "10k",
+  "paired_general_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Lift-light-OSC-POSITION-Paired/medium_replay_paired.hdf5",
+    "episode_skip": 5,
+    "max_epi_length": 1000
+  }
+}

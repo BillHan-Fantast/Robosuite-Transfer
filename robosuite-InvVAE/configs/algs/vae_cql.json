@@ -1,0 +1,109 @@
+{
+  "algorithm": "VAE_CQL",
+  "log_dir": "log",
+  "use_state_input": false,
+  "algorithm_kwargs": {
+    "policy_batch_size": 256,
+    "policy_buffer_size": 150000,
+    "transfer_batch_size": 64,
+    "dynamics_batch_size": 256,
+    "eval_max_path_length": 100,
+    "action_relabel": false,
+    "lambda_penalty": 0.0,
+    "supervise_ratio": 0.0,
+    "unsupervise_ratio": 0.0,
+    "num_agent_epochs": 101,
+    "num_model_epochs": 151,
+    "num_transfer_epochs": 121,
+    "num_loader_workers": 4,
+    "num_eval_steps_per_epoch": 100,
+    "log_policy_per_epochs": 10,
+    "log_transfer_per_epochs": 20,
+    "log_model_per_epochs": 50,
+    "num_trains_per_policy_epoch": 2000,
+    "num_trains_per_transfer_epoch": 1500,
+    "load_dynamics_model": false,
+    "dynamics_model_path": "pretrained_models"
+  },
+  "policy_kwargs": {
+    "hidden_sizes": [256, 256]
+  },
+  "qf_kwargs": {
+    "hidden_sizes": [256, 256]
+  },
+  "policy_trainer_kwargs": {
+    "discount": 0.99,
+    "policy_lr": 0.0003,
+    "qf_lr": 0.0003,
+    "reward_scale": 1.0,
+    "temp": 1.0,
+    "cql_samples": 4,
+    "beta_penalty": 10.0,
+    "batch_size": 256,
+    "soft_target_tau": 0.005,
+    "target_update_frequency": 5,
+    "use_automatic_entropy_tuning": true
+  },
+  "vae_model_kwargs": {
+    "representation_size": 20,
+    "classifier_hidden_sizes": [300, 300],
+    "conv_kwargs": {
+      "hidden_sizes": [],
+      "kernel_sizes": [4, 4, 4, 4, 3],
+      "n_channels": [32, 64, 128, 256, 512],
+      "strides": [2, 2, 2, 2, 2],
+      "paddings": [0, 0, 0, 0, 0],
+      "num_residual": 0,
+      "normalizations": ["in", "in", "none", "none", "none"],
+      "activations": ["relu", "relu", "relu", "relu", "relu"]
+    },
+    "deconv_kwargs": {
+      "architecture": "TwoHead",
+      "hidden_sizes": [],
+      "deconv_input_width": 1,
+      "deconv_input_height": 1,
+      "deconv_input_channels": 512,
+      "deconv_output_kernel_size": 4,
+      "deconv_output_strides": 2,
+      "deconv_output_channels": 3,
+      "kernel_sizes": [4, 4, 4, 5],
+      "n_channels": [256, 128, 64, 32],
+      "strides": [2, 2, 2, 2],
+      "paddings": [0, 0, 1, 1],
+      "normalizations": ["none", "none", "none", "none"],
+      "activations": ["relu", "relu", "relu", "relu"],
+      "tie_fc_layers": true,
+      "tie_deconv_bias": false
+    },
+    "forward_kwargs": {
+      "stochastic_size": 128,
+      "deterministic_size": 256,
+      "model_hidden": 256,
+      "num_models": 1
+    },
+    "inverse_kwargs": {
+      "hidden_size": 2048
+    }
+  },
+  "transfer_trainer_kwargs": {
+    "vae_lr": 0.0001,
+    "dis_lr": 0.0003,
+    "beta": 0.1,
+    "c_domain": 10.0,
+    "c_cycle": 0.0,
+    "c_latent": 0.0,
+    "c_paired": 0.0,
+    "c_src_forward": 0.0,
+    "c_src_inverse": 0.0,
+    "c_trg_forward": 0.0,
+    "c_trg_inverse": 0.0,
+    "reparam_for_losses": false,
+    "num_classifier_steps_per_vae_update": 4
+  },
+  "dynamics_trainer_kwargs": {
+    "kl_scale": 0.1,
+    "image_scale": 1.0,
+    "forward_lr": 3e-4,
+    "inverse_lr": 6e-5
+  }
+}

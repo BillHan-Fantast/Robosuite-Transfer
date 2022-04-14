@@ -1,0 +1,98 @@
+{
+  "exp_name": "Push-light-Panda-MR-to-light-Sawyer-MR",
+  "source_environment_kwargs": {
+    "control_freq": 2,
+    "controller": "OSC_POSITION",
+    "gripper_types": "RethinkGripper",
+    "env_name": "Push",
+    "hard_reset": false,
+    "horizon": 500,
+    "ignore_done": true,
+    "has_offscreen_renderer": true,
+    "use_object_obs": true,
+    "use_camera_obs": true,
+    "reward_shaping": true,
+    "reward_scale": 1.0,
+    "camera_names": ["frontview", "sideview"],
+    "camera_heights": 128,
+    "camera_widths": 128,
+    "robots": ["Panda"],
+    "table_xml": "arenas/table_arena/custom_light.xml"
+  },
+  "target_environment_kwargs": {
+    "control_freq": 2,
+    "controller": "OSC_POSITION",
+    "env_name": "Push",
+    "hard_reset": false,
+    "horizon": 500,
+    "ignore_done": true,
+    "has_offscreen_renderer": true,
+    "use_object_obs": true,
+    "use_camera_obs": true,
+    "reward_shaping": true,
+    "reward_scale": 1.0,
+    "camera_names": ["frontview", "sideview"],
+    "camera_heights": 128,
+    "camera_widths": 128,
+    "robots": ["Sawyer"],
+    "table_xml": "arenas/table_arena/custom_light.xml"
+  },
+  "algorithm_kwargs": {
+    "eval_max_path_length": 50,
+    "dynamics_model_path": "pretrained_models"
+  },
+  "source_general_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Panda-OSC-POSITION/medium_replay.hdf5",
+    "episode_skip": 3,
+    "max_epi_length": 1000
+  },
+  "target_general_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Sawyer-OSC-POSITION/medium_replay.hdf5",
+    "episode_skip": 3,
+    "max_epi_length": 1000
+  },
+  "source_transfer_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Panda-OSC-POSITION/medium_replay.hdf5",
+    "episode_skip": 3,
+    "max_epi_length": 1000
+  },
+  "target_transfer_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Sawyer-OSC-POSITION/medium_replay.hdf5",
+    "episode_skip": 3,
+    "max_epi_length": 1000
+  },
+  "source_eval_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Panda-OSC-POSITION/medium_expert.hdf5",
+    "episode_skip": 20,
+    "max_epi_length": 11
+  },
+  "target_eval_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Sawyer-OSC-POSITION/medium_expert.hdf5",
+    "episode_skip": 20,
+    "max_epi_length": 11
+  },
+  "source_train_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Panda-OSC-POSITION/medium_expert.hdf5",
+    "episode_skip": 1,
+    "max_epi_length": 1000,
+    "model_batch_length": 6
+  },
+  "target_train_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Sawyer-OSC-POSITION/medium_expert.hdf5",
+    "episode_skip": 1,
+    "max_epi_length": 1000,
+    "model_batch_length": 6
+  },
+  "source_supervise_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Panda-OSC-POSITION/medium_replay.hdf5",
+    "episode_skip": 36,
+    "max_epi_length": 1000,
+    "model_batch_length": 6
+  },
+  "target_supervise_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-Sawyer-OSC-POSITION/medium_replay.hdf5",
+    "episode_skip": 36,
+    "max_epi_length": 1000,
+    "model_batch_length": 6
+  }
+}

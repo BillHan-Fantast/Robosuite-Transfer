@@ -1,0 +1,8 @@
+{
+  "paired_name": "5k",
+  "paired_general_dataset_kwargs": {
+    "dataset_path": "dataset/robosuite/Push-light-OSC-POSITION-Paired/medium_replay_paired.hdf5",
+    "episode_skip": 8,
+    "max_epi_length": 1000
+  }
+}
